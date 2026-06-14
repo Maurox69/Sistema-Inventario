@@ -1,4 +1,4 @@
-# Sistema de Inventario SSDD
+# Sistema de Inventario Oficina
 
 Sistema web fullstack para la gestión de activos y consumibles de oficina,
 desarrollado con Angular 17 en el frontend y Spring Boot en el backend.
