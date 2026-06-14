@@ -60,8 +60,8 @@ El frontend incluye \`proxy.conf.json\` que redirige \`/api/*\` a
 
 ## Capturas
 
-_Próximamente_
+-Proximamente
 
 ## Autor
 
-Mauro — [@tu-usuario-github](https://github.com/tu-usuario)
+Mauro — https://github.com/Maurox69
