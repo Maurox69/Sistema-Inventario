@@ -1,0 +1,155 @@
+@use '@angular/material' as mat;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* ── Angular Material Dark Theme ── */
+$app-theme: mat.define-dark-theme((
+  color: (
+    primary: mat.define-palette(mat.$indigo-palette),
+    accent:  mat.define-palette(mat.$indigo-palette),
+    warn:    mat.define-palette(mat.$red-palette),
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+@include mat.core();
+@include mat.all-component-themes($app-theme);
+
+/* ── CSS Variables ── */
+:root {
+  --bg-page:      #0d1117;
+  --bg-sidebar:   #161b25;
+  --bg-card:      #1a2030;
+  --border-color: rgba(255,255,255,0.07);
+  --text-primary: #e2e8f0;
+  --text-muted:   #64748b;
+  --accent:       #6366f1;
+  --accent-soft:  rgba(99,102,241,0.12);
+  --hover-bg:     rgba(255,255,255,0.04);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  height: 100%; margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Material Overrides ── */
+
+/* Form fields */
+.mat-mdc-form-field {
+  --mdc-outlined-text-field-outline-color:       var(--border-color);
+  --mdc-outlined-text-field-hover-outline-color: var(--accent);
+  --mdc-outlined-text-field-focus-outline-color: var(--accent);
+  --mdc-outlined-text-field-label-text-color:    var(--text-muted);
+  --mdc-outlined-text-field-input-text-color:    var(--text-primary);
+  --mdc-outlined-text-field-container-color:     var(--bg-sidebar);
+  --mat-form-field-container-text-size: 14px;
+}
+
+/* Table */
+.mat-mdc-table { background: transparent !important; }
+.mat-mdc-header-row { background: rgba(255,255,255,.03) !important; }
+.mat-mdc-header-cell {
+  color: var(--text-muted) !important;
+  font-size: 11px !important; font-weight: 700 !important;
+  letter-spacing: .6px; text-transform: uppercase;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+.mat-mdc-cell {
+  color: var(--text-primary) !important;
+  font-size: 14px !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* Paginator */
+.mat-mdc-paginator { background: transparent !important; color: var(--text-muted) !important; }
+
+/* Buttons */
+.mat-mdc-unelevated-button.mat-primary {
+  --mdc-filled-button-container-color: var(--accent);
+  --mdc-filled-button-label-text-color: #fff;
+  border-radius: 10px !important;
+}
+.mat-mdc-icon-button { color: var(--text-muted) !important; }
+.mat-mdc-icon-button:hover { color: var(--text-primary) !important; }
+
+/* Select / Options */
+.mat-mdc-select-value { color: var(--text-primary) !important; }
+.mat-mdc-option       { color: var(--text-primary) !important; }
+.mat-mdc-select-panel { background: var(--bg-card) !important; }
+
+/* Spinner */
+.mat-mdc-progress-spinner circle { stroke: var(--accent) !important; }
+
+/* Dialog */
+.dark-dialog .mat-mdc-dialog-container {
+  --mdc-dialog-container-color: var(--bg-card);
+  --mdc-dialog-supporting-text-color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px !important;
+}
+
+/* Snackbar error */
+.snack-error {
+  --mdc-snackbar-container-color: #2d1b1b;
+  --mdc-snackbar-supporting-text-color: #f87171;
+  border: 1px solid rgba(248,113,113,.2);
+}
+
+/* Divider */
+.mat-divider { border-color: var(--border-color) !important; }
+
+/* Slide toggle */
+.mat-mdc-slide-toggle .mdc-switch__track { background: var(--border-color) !important; }
+
+/* Stroked button */
+.mat-mdc-outlined-button:not([disabled]) {
+  border-color: var(--border-color) !important;
+  color: var(--text-muted) !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.18); }
+
+/* Fix dialog en móvil */
+@media (max-width: 768px) {
+  .cdk-overlay-container {
+    z-index: 300 !important;
+    position: fixed !important;
+    inset: 0 !important;
+  }
+
+  .cdk-overlay-backdrop {
+    position: fixed !important;
+    inset: 0 !important;
+  }
+
+  .cdk-global-overlay-wrapper {
+    position: fixed !important;
+    inset: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .mat-mdc-dialog-container {
+    max-height: 85vh !important;
+    max-width: 92vw !important;
+    overflow-y: auto !important;
+    width: 92vw !important;
+  }
+
+  .dark-dialog .mat-mdc-dialog-container {
+    border-radius: 12px !important;
+  }
+}
